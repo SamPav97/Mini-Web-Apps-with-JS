@@ -8,6 +8,6 @@ Instructions: You can see the screenshots of the UI in 'sample views' in each pr
   2. 'node' the server.js to obtain the backend data for loading the content.
   3. Open the index.html file in a 'life-server' extension.
 
-Experience gained with: HTTP requests, REST Services, BAAS (backend as a service), asynchronous code (Promises, using async/await), Templating, Routing. Creating architecture of an application; design patterns and their practical direction.
+Experience gained with: HTTP requests, REST Services, BAAS (backend as a service), asynchronous code (Promises, using async/await), Templating with 'lit-html' library, Routing with 'Page' library. Creating architecture of an application; design patterns and their practical direction.
   
  
