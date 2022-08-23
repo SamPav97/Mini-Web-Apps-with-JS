@@ -1,16 +1,12 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { getUserMemes } from '../api/data.js';
 
-//u add the object id to the href for details so u can get the speciffic object later
 const myMemesTemp = (object) => html` 
     <div class="user-meme">
         <p class="user-meme-title">${object.title}</p>
         <img class="userProfileImage" alt="meme-img" src="${object.imageUrl}">
         <a class="button" href="/details/${object._id}">Details</a>
     </div>`
-
-
-
 
 const myTeamsTemp = (mappedMeme) => html`
         <section id="user-profile-page" class="user-profile">

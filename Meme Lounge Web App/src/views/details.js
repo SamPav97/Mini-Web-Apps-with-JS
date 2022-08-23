@@ -24,7 +24,7 @@ const detailsTemp = (obj, onD) => html`
                 </div>
             </div>`
 
-export async function showDetails(ctx){// this is how u ge the id from params.
+export async function showDetails(ctx){
     const getMeme = await getById(ctx.params.detailsId)
     ctx.render(detailsTemp(getMeme, onDel))
     ctx.updateNav()

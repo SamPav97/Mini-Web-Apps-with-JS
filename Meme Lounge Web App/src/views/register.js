@@ -50,6 +50,6 @@ export async function showRegister(ctx) {
 
         await register(username, email, password, gender );
         form.reset()
-        ctx.page.redirect('/allMemes'); //not to home but to catalog fix later
+        ctx.page.redirect('/allMemes');
     }
 }

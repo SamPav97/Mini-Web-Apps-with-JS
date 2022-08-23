@@ -40,19 +40,5 @@ export async function showCreate(ctx) {
         form.reset()
         window.location = '/allMemes';
         
-        //form.reset()
-        // ctx.page.redirect('/'); this does not refresh furniture at catalog
-        //add event listeners to all ids and change thier classes w input event
     }
 }
-
-
-
-// {
-//     "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
-//     "name": "Storm Troopers",
-//     "logoUrl": "/assets/atat.png",
-//     "description": "These ARE the droids we're looking for",
-//     "_createdOn": 1615737591748,
-//     "_id": "34a1cab1-81f1-47e5-aec3-ab6c9810efe1"
-// },
