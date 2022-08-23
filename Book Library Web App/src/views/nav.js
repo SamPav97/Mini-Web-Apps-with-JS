@@ -19,26 +19,3 @@ const navTemp = () => html`                <section class="navbar-dashboard">
 export function navDisp() {
     render(navTemp(), document.querySelector('nav'))
 }
-
-
-
-{/* <nav>
-<a href="/allMemes">All Memes</a>
- <!-- Logged users -->
-<div class="user"  style="display: ${localStorage.user ? 'inline': 'none'}">
-    <a href="/createMeme">Create Meme</a>
-    <div class="profile">
-        <span>Welcome, ${localStorage.user ? JSON.parse(localStorage.user).email : 'No User'}</span>
-        <a href="/myProfile">My Profile</a>
-        <a href="/logout">Logout</a>
-    </div>
-</div>
-<!-- Guest users -->
-<div class="guest" style="display: ${localStorage.user ? 'none': 'inline'}">
-    <div class="profile">
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-    </div>
-    <a class="active" href="/home">Home Page</a>
-</div>
-</nav> */}

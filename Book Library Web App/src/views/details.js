@@ -42,24 +42,3 @@ export async function showDetails(ctx){// this is how u get the id from params.
     }
 
 }
-
-{/* <section id="meme-details">
-            <h1> Meme Title: ${obj.title}
-
-            </h1>
-            <div class="meme-details">
-                <div class="meme-img">
-                    <img alt="meme-alt" src="${obj.imageUrl}">
-                </div>
-                <div id=${obj._id} class="meme-description">
-                    <h2>Meme Description</h2>
-                    <p>
-                        ${obj.description}
-                    </p>
-
-                    <!-- Buttons Edit/Delete should be displayed only for creator of this meme  -->
-                    <a class="button warning" href="/edit/${obj._id}" style="display: ${localStorage.user? (obj._ownerId == JSON.parse(localStorage.user)._id ? 'inline' : 'none'):'none'}">Edit</a>
-                    <button @click=${onD} class="button danger" style="display: ${localStorage.user? (obj._ownerId == JSON.parse(localStorage.user)._id ? 'inline' : 'none'):'none'}">Delete</button>
-                    
-                </div>
-            </div> */}

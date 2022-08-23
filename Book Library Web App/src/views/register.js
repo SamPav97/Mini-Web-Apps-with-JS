@@ -1,6 +1,5 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { register } from '../api/userActions.js';
-//import { notify } from './notify.js';
 
 const registerTemp = (onSubmit) => html`
              <section id="register-page" class="register">
@@ -40,10 +39,8 @@ export async function showRegister(ctx) {
         const form = event.target;
         const formData = new FormData(form);
         let email = formData.get('email');
-        // let username = formData.get('username');
         let password = formData.get('password');
         let repPassword = formData.get('confirm-pass');
-        // let gender = formData.get('gender');
 
         if (email.length < 1 || password.length < 1 || password != repPassword) {
             window.alert('Fields cannot be empty or passwords do not match!');

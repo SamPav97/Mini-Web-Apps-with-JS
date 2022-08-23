@@ -10,10 +10,6 @@ import { showDetails } from './views/details.js';
 import { showCreate } from './views/create.js';
 import { showMyObjects } from './views/myObjects.js';
 import { showEdit } from './views/edit.js';
-// import { showHome } from './views/home.js';
-
-
-
 
 
 const main = document.querySelector('main');
@@ -26,11 +22,10 @@ page('/allObjects', showAllObjects);
 page('/login', showLogin);
 page('/register', showRegister);
 page('/logout', onLogout);
-page('/details/:detailsId', showDetails);//this is a param after ":" u can find it in the href when creating the caralog
+page('/details/:detailsId', showDetails);
 page('/createObject', showCreate);
 page('/myObjects', showMyObjects);
 page('/edit/:detailsId', showEdit);
-// page('/', localStorage.user ? showAllMemes: showHome); /if loged in one home page else other
 page('*', notFound);
 
 

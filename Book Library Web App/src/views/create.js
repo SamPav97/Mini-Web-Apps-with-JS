@@ -1,7 +1,5 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { createObject } from '../api/data.js';
-//import { notify } from './notify.js';
-
 
 const createTemplate = (listener) => html`
  <section id="create-page" class="create">
@@ -53,7 +51,7 @@ export async function showCreate(ctx) {
         let form = event.target;
         const formData = new FormData(form);
         let description = formData.get('description').trim();
-        let title = formData.get('title').trim();//the path needs to be acommodate for. remember u set path in catalog too
+        let title = formData.get('title').trim();
         let imageUrl = formData.get('imageUrl').trim();
         let type = formData.get('type');
 

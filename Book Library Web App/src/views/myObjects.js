@@ -1,7 +1,6 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { getUserObjects } from '../api/data.js';
 
-//u add the object id to the href for details so u can get the speciffic object later
 const myObjectTemp = (object) => html` 
                    <li class="otherBooks">
                     <h3>${object.title}</h3>
@@ -31,26 +30,3 @@ export async function showMyObjects(ctx) {
     ctx.render(myObjectsTemp(mappedObjects));
     ctx.updateNav()
 }
-
-
-{/* <section id="user-profile-page" class="user-profile">
-            <article class="user-info">
-                <img id="user-avatar-url" alt="user-profile"
-                    src="${localStorage.user ? (JSON.parse(localStorage.user).gender == 'female' ? '/images/female.png' : '/images/male.png') : 'noPic'}">
-                <div class="user-content">
-                    <p>${JSON.parse(localStorage.user).username}</p>
-                    <p>${JSON.parse(localStorage.user).email}</p>
-                    <p>My memes count: ${mappedMeme.length}</p>
-                </div>
-            </article>
-            <h1 id="user-listings-title">User Memes</h1>
-            <div class="user-meme-listings">
-                ${mappedMeme.length < 1 ? html`<p class="no-memes">No memes in database.</p>` : mappedMeme}
-            </div>
-        </section> */}
-
-    //     <div class="user-meme">
-    //     <p class="user-meme-title">${object.title}</p>
-    //     <img class="userProfileImage" alt="meme-img" src="${object.imageUrl}">
-    //     <a class="button" href="/details/${object._id}">Details</a>
-    // </div>
