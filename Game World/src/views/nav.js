@@ -6,6 +6,7 @@ const navTemp = () => html`
             <nav>
                 <span>Welcome${localStorage.user ? ', ' + JSON.parse(localStorage.user).email : '!'}</span>
                 <a href="/allObjects">All games</a>
+                <a href="/Search">Search</a>
                 <!-- Logged-in users -->
                 <div id="user" style="display: ${localStorage.user ? 'inline': 'none'}">
                     <a href="/createObject">Create Game</a>

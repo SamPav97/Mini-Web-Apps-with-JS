@@ -9,10 +9,8 @@ import { logout } from './api/userActions.js';
 import { showDetails } from './views/details.js';
 import { showCreate } from './views/create.js';
 import { showEdit } from './views/edit.js';
-// import { showMyObjects } from './views/myObjects.js';
+import { showSearch } from './views/search.js';
 
-import * as api from './api/data.js'
-window.api = api
 
 const main = document.getElementById('main-content');
 
@@ -21,6 +19,7 @@ page('/index.html', '/');
 page('/', '/home'); // In case we want a different home page than "/"
 page('/home', showHome)
 page('/allObjects', showAllObjects);
+page('/search', showSearch);
 page('/login', showLogin);
 page('/register', showRegister);
 page('/logout', onLogout);

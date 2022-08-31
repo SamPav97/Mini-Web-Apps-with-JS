@@ -15,7 +15,8 @@ const endpoints = {
     'dislike': '/data/likes/',
     'getComments': '/data/comments',
     'addComment': '/data/comments',
-    'count': '/data/games?count'
+    'count': '/data/games?count',
+    'search': '/data/games?where='
 };
 export async function getAllObjects(page) {
     return api.get(endpoints.getAllObjects(page))
@@ -79,4 +80,10 @@ export async function commentObject(data) {
 export async function getCount() {
     const count = await api.get(endpoints.count);
     return Math.ceil(count / pageSize);
+}
+
+// Search related requests below
+
+export async function searchGames(param) {
+    return api.get(endpoints.search + encodeURIComponent(`title LIKE "${param}"`));
 }
