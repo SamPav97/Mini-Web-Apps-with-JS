@@ -1,8 +1,9 @@
 import * as api from './api.js'
-// this is the data file where ull be gettn all ur data
-//this is a dix with urls for all data locations
+
+const pageSize = 3;
+
 const endpoints = {
-    'getAllObjects': `/data/games?sortBy=_createdOn%20desc&distinct=category`,
+    getAllObjects: (page) => `/data/games?sortBy=_createdOn%20desc&offset=${(page - 1) * pageSize}&pageSize=${pageSize}`,
     'getObjectById': '/data/games/',
     'create': '/data/games',
     'delete': '/data/games/',
@@ -13,10 +14,11 @@ const endpoints = {
     'addLike': '/data/likes',
     'dislike': '/data/likes/',
     'getComments': '/data/comments',
-    'addComment': '/data/comments'
+    'addComment': '/data/comments',
+    'count': '/data/games?count'
 };
-export async function getAllObjects() {
-    return api.get(endpoints.getAllObjects)
+export async function getAllObjects(page) {
+    return api.get(endpoints.getAllObjects(page))
 }
 export async function getById(id) {// asks for the data about the furniture w the given id
     return api.get(endpoints.getObjectById + id);
@@ -70,4 +72,11 @@ export async function getCommentsByObjectId(gameId) {
 
 export async function commentObject(data) {
     return api.post(endpoints.addComment, data)
+}
+
+// Pagination related requests below
+
+export async function getCount() {
+    const count = await api.get(endpoints.count);
+    return Math.ceil(count / pageSize);
 }

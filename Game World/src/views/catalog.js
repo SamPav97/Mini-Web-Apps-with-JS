@@ -1,5 +1,5 @@
-import { html } from '../../node_modules/lit-html/lit-html.js';
-import { getAllObjects } from '../api/data.js';
+import { html, nothing } from '../../node_modules/lit-html/lit-html.js';
+import { getAllObjects, getCount } from '../api/data.js';
 
 // You add the object id to the href for details so u can get the speciffic object later.
 const objectsHtml = (object) => html`
@@ -12,23 +12,33 @@ const objectsHtml = (object) => html`
                 </div>
             </div>`
 
-let allObjects = await getAllObjects();
 
-let mappedObjects = allObjects.map(objectsHtml);
-
-
-const catalogTemplate = (objects) => html`
+const catalogTemplate = (objects, page, pages) => html`
                 
         <!-- Catalogue -->
         <section id="catalog-page">
             <h1>All Games</h1>
+            <div class="levels">
+                Page: ${page} of ${pages}
+                ${page > 1 ? html`<a href="/allObjects?page=${page - 1}">&lt; Prev</a>`: nothing}
+                ${page < pages ? html`<a href="/allObjects?page=${page + 1}">&gt; Next</a>` : nothing}
+            </div>
             <!-- Display div: with information about every game (if any) -->
-            ${objects.length < 1 ? html`<h3 class="no-articles">No articles yet</h3>` : objects}
+            ${objects.length < 1 ? html`<h3 class="no-articles">No articles yet</h3>` : objects.map(objectsHtml)}
             <!-- Display paragraph: If there is no games  -->
         </section>`;
 
 
 export async function showAllObjects(ctx) {
-    ctx.render(catalogTemplate(mappedObjects));
+    //URLSearchParams returns an object that I need to unpack to get to the page number.
+    const query = Object.fromEntries([...(new URLSearchParams(ctx.querystring)).entries()]);
+    const page = Number(query.page || 1);
+
+    // Get the number of pages you have so you can decide when to stop showing the 'next' button in pagination
+    let [allObjects, pages] = await Promise.all([
+        getAllObjects(page),
+        getCount()
+    ]);
+    ctx.render(catalogTemplate(allObjects, page, pages));
     ctx.updateNav()
 }
