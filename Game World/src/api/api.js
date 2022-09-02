@@ -1,16 +1,20 @@
+// All API calls go through this file.
 const host = 'http://localhost:3030';
 
+// Function below takes the method for the request, the url for the call, and the data (if any).
 async function request(method, url, data) {
     const options = {
         method,
         headers: {},
     };
 
+    // If there is data attach it to the request.
     if (data != undefined) {
         options.headers['Content-Type'] = 'application/json';
         options.body = JSON.stringify(data);
     }
 
+    // See if person making the request is logged in and give them the corresponding permissions.
     const user = JSON.parse(localStorage.getItem('user'));//note this can sometimes be in session storage
 
     if (user) {
@@ -18,9 +22,11 @@ async function request(method, url, data) {
         options.headers['X-Authorization'] = token;
     }
 
+    // Make the request but have it in try/catch to catch potential errors.
     try {
         const res = await fetch(host + url, options);
 
+        // Forward error if one.
         if (res.ok != true) {
             if(res.status == 403){
                 localStorage.removeItem('user');
@@ -29,6 +35,7 @@ async function request(method, url, data) {
             throw new Error(error.message);
         }
 
+        //Get result. Parse the body of result as JSON if result is not empty.
         if (res.status == 204) {
             return res;
         } else {
@@ -40,6 +47,7 @@ async function request(method, url, data) {
     }
 }
 
+// Different function for each method to export and use them.
 async function get(url) {
     return request('get', url);
 }
