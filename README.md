@@ -1,5 +1,5 @@
 # Mini-Web-Apps-with-JS
-A collection of different single-page web app mini projects.
+A collection of different single-page web app mini projects. I recommend looking at Game World because it is the most advanced project of the three.
 
 Description: Every folder is its own single-page web app. HTML & CSS templates were provided in advance. Backend server was provided in advance.
 
