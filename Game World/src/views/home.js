@@ -1,6 +1,8 @@
+// Home view template.
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { getAllObjects } from '../api/data.js';
 
+// Display 3 most recent games.
 const objectsHtml = (object) => html`
     <div class="game">
         <div class="image-wrap">

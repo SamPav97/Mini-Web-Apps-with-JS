@@ -1,5 +1,5 @@
 // All functions that get login/out related data from API are in this file.
-import { get, post} from './api.js';
+import { get, post } from './api.js';
 
 const endpoints = {
     'login': '/users/login',

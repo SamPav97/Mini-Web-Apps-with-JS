@@ -1,19 +1,20 @@
+// Comments template and display logic below.
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { commentObject } from '../api/data.js';
 import { notify } from './notify.js';
 
+// Map all comments to template below.
 export function comments(data) {
-
     let commentTemp = (comm) => html`
                         <li class="comment">
                             <p>Content: ${comm.comment}</p>
                         </li>
     `;
-    
+
     let comms = data.map(commentTemp);
 
+    // Display comments.
     let commentsHtml = (objects) => html`
-                    <!-- Bonus ( for Guests and Users ) -->
                     <div class="details-comments">
                         <h2>Comments:</h2>
                         <ul>
@@ -26,9 +27,9 @@ export function comments(data) {
     return commentsHtml(comms)
 };
 
+// Receive and handle new comments.
 export function commentForm(ctx) {
     let commentF = (onComm) => html`
-            <!-- Bonus -->
             <!-- Add Comment ( Only for logged-in users, which is not creators of the current game ) -->
             <article class="create-comment">
                 <label>Add new comment:</label>

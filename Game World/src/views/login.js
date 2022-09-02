@@ -1,3 +1,4 @@
+//Login template and functionalities.
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import { login } from '../api/userActions.js';
 import { notify } from './notify.js';
@@ -6,13 +7,12 @@ const loginTemp = (onSubmit) => html`
         <!-- Login Page ( Only for Guest users ) -->
         <section id="login-page" class="auth">
             <form id="login" @submit=${onSubmit}>
-
                 <div class="container">
                     <div class="brand-logo"></div>
                     <h1>Login</h1>
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" placeholder="Sokka@gmail.com">
-
+        
                     <label for="login-pass">Password:</label>
                     <input type="password" id="login-password" name="password">
                     <input type="submit" class="btn submit" value="Login">
@@ -39,12 +39,12 @@ export async function showLogin(ctx) {
             notify('All fields are required!')
             return
         }
-        try{
-        await login(email, password);
-        form.reset()
-        ctx.page.redirect('/home');
+        try {
+            await login(email, password);
+            form.reset()
+            ctx.page.redirect('/home');
 
-        } catch(err){
+        } catch (err) {
             notify('We cannot log you in!')
         }
     }

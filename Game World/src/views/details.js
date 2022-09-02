@@ -1,3 +1,4 @@
+// Game details template and other functionalities.
 import { html, nothing } from '../../node_modules/lit-html/lit-html.js';
 import { deleteById, dislikeGame, getById, getCommentsByObjectId, getLikesByObjectId, hasLiked, likeObject } from '../api/data.js';
 import { commentForm, comments } from './comments.js';
@@ -15,6 +16,7 @@ const detailsTemp = (obj, onD, commentForm, comments, onLike, onDislike) => html
                     <span class="levels">Likes: ${obj.likes}</span>
                     ${obj.canLike ? html`
                     <div class="buttons">
+                        <!-- Like button ( Only for logged-in non-creator of this game )  -->
                     <a @click=${onLike} href="javascript:void(0)" class="button">Like</a>
                     </div>`
                     : nothing}
@@ -39,18 +41,21 @@ const detailsTemp = (obj, onD, commentForm, comments, onLike, onDislike) => html
                 </div>
             </div>
 
+            <!-- Comment form ( Only for logged-in non-creator of this game )  -->
             ${localStorage.user? (obj._ownerId != JSON.parse(localStorage.user)._id ? commentForm : 'none'):'none'}
-
         </section>
 `;
 
 export async function showDetails(ctx){
     const gameId = ctx.params.detailsId;
+    // Get the game and its comments.
     const [getObject, commentSection] = await Promise.all([getById(gameId), getCommentsByObjectId(gameId)]);
+    //Get the likes and check if user already liked it.
     const [likes, liked] = await Promise.all([
         getLikesByObjectId(gameId),
         hasLiked(gameId, JSON.parse(localStorage.user))
     ]);
+    // Add liks to the object (the game).
     getObject.likes = likes;
 
     // I demonstrate two different methods for checking log status and owenrship. One below and one in the html temp above.

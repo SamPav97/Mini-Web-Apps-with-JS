@@ -28,7 +28,7 @@ async function request(method, url, data) {
 
         // Forward error if one.
         if (res.ok != true) {
-            if(res.status == 403){
+            if (res.status == 403) {
                 localStorage.removeItem('user');
             }
             const error = await res.json();
@@ -64,7 +64,7 @@ async function del(url, data) {
     return request('delete', url, data);
 }
 
-export{
+export {
     get,
     post,
     put,

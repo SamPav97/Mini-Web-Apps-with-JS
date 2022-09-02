@@ -1,3 +1,4 @@
+// Routing and handling views happens here.
 import page from '../node_modules/page/page.mjs';
 import { render as litRender } from '../node_modules/lit-html/lit-html.js';
 import { navDisp } from './views/nav.js';
@@ -14,19 +15,19 @@ import { showSearch } from './views/search.js';
 
 const main = document.getElementById('main-content');
 
+// Call views according to url. Routing with 'Page.js'
 page(decorateContext);
 page('/index.html', '/');
-page('/', '/home'); // In case we want a different home page than "/"
+page('/', '/home');
 page('/home', showHome)
 page('/allObjects', showAllObjects);
 page('/search', showSearch);
 page('/login', showLogin);
 page('/register', showRegister);
 page('/logout', onLogout);
-page('/details/:detailsId', showDetails);//this is a param after ":" u can find it in the href when creating the caralog
+page('/details/:detailsId', showDetails);
 page('/createObject', showCreate);
 page('/edit/:detailsId', showEdit);
-// page('/myObjects', showMyObjects);
 page('*', notFound);
 
 
@@ -37,6 +38,7 @@ function render(templateResult) {
     litRender(templateResult, main);
 }
 
+// Decorate context with render and nav bar update.
 function decorateContext(ctx, next) {
     ctx.render = render;
     ctx.updateNav = updateNav;
@@ -48,12 +50,12 @@ function notFound(ctx) {
 }
 
 function updateNav() {
-navDisp()
+    navDisp()
 }
 
 function onLogout() {
     logout()
     updateNav()
     window.location = '/'
-    
+
 }
