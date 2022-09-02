@@ -1,3 +1,4 @@
+// All functions that get login/out related data from API are in this file.
 import { get, post} from './api.js';
 
 const endpoints = {
@@ -18,7 +19,7 @@ export async function register(email, password) {
     localStorage.setItem('user', JSON.stringify(user));
 }
 
-export function logout() { //NOT ASYNC U R NOT AWAITING ANYTHING
+export function logout() {
     get(endpoints.logout);
     localStorage.removeItem('user');
     localStorage.removeItem('token');
