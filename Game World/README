@@ -1,1 +1,5 @@
-Game World
+This is the Game World web app. It is the most advanced out of the three mini-projects.
+
+You can like, dislike, comment, search and get notifications. The backend server was provided in advance. The web app and all the front-end functionalities I created from scratch.
+
+See 'sample views' folder for screenshots of GUI.
